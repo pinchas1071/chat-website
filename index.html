@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שירות לקוחות - צ'אט תמיכה</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .intro h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border-right: 5px solid #4facfe;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .feature p {
+            color: #666;
+        }
+
+        .chat-notice {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            border: 2px solid rgba(79, 172, 254, 0.2);
+        }
+
+        .chat-notice h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .chat-notice p {
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .chat-button-demo {
+            display: inline-block;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .chat-button-demo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        /* עיצוב הצ'אט של ChatRace */
+        [id*="ktt10-trigger"] {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+            width: 70px !important;
+            height: 70px !important;
+            border-radius: 50% !important;
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4) !important;
+            border: none !important;
+            transition: all 0.3s ease !important;
+        }
+
+        [id*="ktt10-trigger"]:hover {
+            transform: scale(1.1) !important;
+            box-shadow: 0 12px 35px rgba(79, 172, 254, 0.6) !important;
+        }
+
+        [id*="ktt10"]:not([id*="trigger"]) {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            border-radius: 25px !important;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15) !important;
+            border: 2px solid rgba(255,255,255,0.2) !important;
+            width: 380px !important;
+            height: 520px !important;
+        }
+
+        /* רספונסיבי */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            [id*="ktt10"]:not([id*="trigger"]) {
+                width: calc(100vw - 20px) !important;
+                height: 70vh !important;
+                right: 10px !important;
+                left: 10px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 ברוכים הבאים</h1>
+            <p>שירות לקוחות מתקדם עם צ'אט בזמן אמת</p>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <h2>נשמח לעזור לכם</h2>
+                <p>הצוות שלנו זמין עבורכם לכל שאלה או בקשה</p>
+                <p>ניתן ליצור קשר דרך הצ'אט המהיר למטה או בכל דרך אחרת הנוחה לכם</p>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <h3>צ'אט מהיר</h3>
+                    <p>תמיכה מיידית דרך הצ'אט הכחול בפינה הימנית. פשוט לחצו והתחילו לכתוב!</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>מענה מהיר</h3>
+                    <p>אנחנו מתחייבים למענה מהיר ויעיל לכל פנייה. הצוות שלנו כאן בשבילכם.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>שירות מאובטח</h3>
+                    <p>כל השיחות מוגנות ומאובטחות. הפרטיות שלכם חשובה לנו מאוד.</p>
+                </div>
+            </div>
+
+            <div class="chat-notice">
+                <h3>איך להשתמש בצ'אט?</h3>
+                <p>🔵 חפשו את הכפתור הכחול העגול בפינה הימנית התחתונה</p>
+                <p>👆 לחצו עליו כדי לפתוח את חלון הצ'אט</p>
+                <p>✍️ כתבו את השאלה או הבקשה שלכם ואנחנו נענה מיד!</p>
+                
+                <div style="margin-top: 20px; font-size: 1.1em; color: #4facfe;">
+                    <strong>💡 טיפ: הכפתור נמצא תמיד בפינה למטה ←</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 - שירות לקוחות מתקדם</p>
+            <p>אנחנו כאן בשבילכם 24/7</p>
+        </div>
+    </div>
+
+    <!-- ChatRace Integration -->
+    <script src="https://chatrace.com/webchat/plugin.js?v=6"></script>
+    <script>
+        // הטענת ChatRace אחרי שהדף נטען
+        window.addEventListener('load', function() {
+            if (typeof ktt10 !== 'undefined') {
+                ktt10.setup({
+                    id: "qmW6Ct2SaAoig15",
+                    accountId: "1396800",
+                    color: ""
+                });
+                console.log('ChatRace loaded successfully');
+            } else {
+                console.error('ChatRace not available');
+            }
+        });
+    </script>
+</body>
+</html>
